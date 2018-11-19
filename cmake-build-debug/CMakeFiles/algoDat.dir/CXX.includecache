@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/deralex/CLionProjects/algoDat/CursorList.h
+student.h
+/home/deralex/CLionProjects/algoDat/student.h
+iostream
+-
+iterator
+-
+
+/home/deralex/CLionProjects/algoDat/main.cpp
+iostream
+-
+student.h
+/home/deralex/CLionProjects/algoDat/student.h
+student.cpp
+/home/deralex/CLionProjects/algoDat/student.cpp
+CursorList.h
+/home/deralex/CLionProjects/algoDat/CursorList.h
+
+/home/deralex/CLionProjects/algoDat/student.cpp
+student.h
+/home/deralex/CLionProjects/algoDat/student.h
+iostream
+-
+
+/home/deralex/CLionProjects/algoDat/student.h
+ostream
+-
+cstring
+-
+
