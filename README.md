@@ -1,1 +1,1 @@
-# Gerneric-Linked-List
+# Generic-Linked-List
