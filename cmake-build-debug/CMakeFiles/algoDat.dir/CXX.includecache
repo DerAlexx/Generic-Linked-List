@@ -6,31 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/home/deralex/CLionProjects/algoDat/CursorList.h
+C:/Users/Paul/Desktop/c++/CursorList.h
 student.h
-/home/deralex/CLionProjects/algoDat/student.h
+C:/Users/Paul/Desktop/c++/student.h
 iostream
 -
 iterator
 -
 
-/home/deralex/CLionProjects/algoDat/main.cpp
+C:/Users/Paul/Desktop/c++/main.cpp
 iostream
 -
 student.h
-/home/deralex/CLionProjects/algoDat/student.h
+C:/Users/Paul/Desktop/c++/student.h
 student.cpp
-/home/deralex/CLionProjects/algoDat/student.cpp
+C:/Users/Paul/Desktop/c++/student.cpp
 CursorList.h
-/home/deralex/CLionProjects/algoDat/CursorList.h
+C:/Users/Paul/Desktop/c++/CursorList.h
 
-/home/deralex/CLionProjects/algoDat/student.cpp
+C:/Users/Paul/Desktop/c++/student.cpp
 student.h
-/home/deralex/CLionProjects/algoDat/student.h
+C:/Users/Paul/Desktop/c++/student.h
 iostream
 -
 
-/home/deralex/CLionProjects/algoDat/student.h
+C:/Users/Paul/Desktop/c++/student.h
 ostream
 -
 cstring
