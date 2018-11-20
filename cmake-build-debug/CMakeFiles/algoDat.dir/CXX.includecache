@@ -6,31 +6,31 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Paul/Desktop/c++/CursorList.h
+/home/deralex/Schreibtisch/jj/CursorList.h
 student.h
-C:/Users/Paul/Desktop/c++/student.h
+/home/deralex/Schreibtisch/jj/student.h
 iostream
 -
 iterator
 -
 
-C:/Users/Paul/Desktop/c++/main.cpp
+/home/deralex/Schreibtisch/jj/main.cpp
 iostream
 -
 student.h
-C:/Users/Paul/Desktop/c++/student.h
+/home/deralex/Schreibtisch/jj/student.h
 student.cpp
-C:/Users/Paul/Desktop/c++/student.cpp
+/home/deralex/Schreibtisch/jj/student.cpp
 CursorList.h
-C:/Users/Paul/Desktop/c++/CursorList.h
+/home/deralex/Schreibtisch/jj/CursorList.h
 
-C:/Users/Paul/Desktop/c++/student.cpp
+/home/deralex/Schreibtisch/jj/student.cpp
 student.h
-C:/Users/Paul/Desktop/c++/student.h
+/home/deralex/Schreibtisch/jj/student.h
 iostream
 -
 
-C:/Users/Paul/Desktop/c++/student.h
+/home/deralex/Schreibtisch/jj/student.h
 ostream
 -
 cstring

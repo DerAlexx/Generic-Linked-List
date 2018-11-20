@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : student.h
 // Author      : Alexander M. Westphal / Paul Schröder
-// Version     : Alpha v0.1
+// Version     : Version 1.0
 // Copyright   : Alexander M. Westphal / Paul Schröder
-// Description : ...., Ansi-style
+// Description : Header-File for the Sutdent Object.
 //============================================================================
 
 #include <ostream>
@@ -14,46 +14,74 @@ using namespace std;
 
 class Student {
 public:
-    //Konstruktor und Dekonstruktor
+    /**
+     * Constructor and Destructor
+     */
     Student(int MatrikelNummer, char* name, char* vorname, int geb);
     Student();
 
-    //Getter Methoden
+    /**
+     * Getter for the Student-object
+     */
     const int getMatrikelNumber() const;
     char* getName();
     char* getVorname();
     int getGeburtstag();
 
-    //Setter Methoden
+    /**
+     * Setter for Student
+     */
     void setMatrikelNumber(const int number);
     void setName(char* naName);
     void setVorname(char* voName);
     void setGeburtstag(const int geb);
 
-    //Methoden
+    /**
+     * Operator for the sutdent object
+     */
     bool operator == (const Student &other);
     bool operator != (Student &other);
     bool operator <= (Student &other);
     bool operator >= (Student &other);
     bool operator < (Student &other);
     bool operator > (Student &other);
-    void start();
+
+    /**
+     * write und read function for streams.
+     */
     virtual void write(ostream& ostr);
     virtual void read(istream& istr);
 
+    /**
+     * Attributes
+     */
 private:
-    //Attribute
     int matrikelNummer;
     char name[10];
     char vorname[10];
     int geburtstag;
 };
 
+/**
+ * Overloading of the << operator.
+ * Will return a outputstream containing the student.
+ * @param ostr outputstream
+ * @param stud student opject
+ * @return will return a output stream
+ */
+
 ostream& operator << (ostream& ostr,Student& stud) {
     stud.write(ostr);
     return ostr;
 }
 
+/**
+ * Overloading of the >> operator.
+ * Will return a input stream and read the student from it.
+ * @param istr input stream as param
+ * @param stud student-object
+ * @return will return a input stream
+ */
 istream& operator >> (istream& istr, Student& stud) {
     stud.read(istr);
     return istr;

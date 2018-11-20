@@ -1,14 +1,13 @@
 //============================================================================
 // Name        : student.cpp
 // Author      : Alexander M. Westphal / Paul Schröder
-// Version     : Alpha v0.1
+// Version     : Version 1.0
 // Copyright   : Alexander M. Westphal / Paul Schröder
-// Description : ..., Ansi-style
+// Description : Studentclass - Class that represents a Student Object.
 //============================================================================
 
 #include "student.h"
 #include <iostream>
-
 
 /**
  * Getter for the Matrikelnummer.
@@ -123,6 +122,7 @@ bool Student::operator >= (Student &stu2) {
 bool Student::operator < (Student &stu2) {
     return getMatrikelNumber() < stu2.getMatrikelNumber();
 }
+
 /**
  * Method to check whether two Matrikelnummern are equal or bigger
  */
@@ -130,10 +130,18 @@ bool Student::operator > (Student &stu2) {
     return getMatrikelNumber() > stu2.getMatrikelNumber();
 }
 
+/**
+ * Method put a student-object on a outputstream.
+ * @param ostr outout stream as param
+ */
 void Student::write(ostream& ostr) {
-    ostr << getMatrikelNumber() << getName() << getVorname() << getGeburtstag() << endl;
+    ostr << "Matrikelnummer:" << getMatrikelNumber() << " Nachname:" << getName() << " Vorname:" << getVorname() << " Geburtstag:" << getGeburtstag() << endl;
 }
 
+/**
+ * Method to grep information from a inputstream.
+ * @param istr input stream as param.
+ */
 void Student::read(istream& istr) {
     istr >> matrikelNummer >> name >> vorname >> geburtstag;
 }

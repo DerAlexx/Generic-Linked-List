@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : CursorList.h
 // Author      : Alexander M. Westphal / Paul Schröder
-// Version     : Alpha v0.1
+// Version     : Version 1.0
 // Copyright   : Alexander M. Westphal / Paul Schröder
-// Description :
+// Description : CursorList Template Class
 //============================================================================
 
 #ifndef ALGODAT_CURSORLIST_H
@@ -64,8 +64,8 @@ public:
         }
 
         /**
-         *
-         * @return
+         * Overloading the * operator
+         * @return will return the Data of a zeile-object.
          */
         T& operator *() {
             return m_el[m_index].data;
@@ -82,26 +82,26 @@ public:
         }
 
         /**
-         *
-         * @param rhs
-         * @return
+         * Comparing a iterator with another iterator on inequality.
+         * @param rhs the iterator to compare as const.
+         * @return will return true in case the iterator a not the same.
          */
         bool operator != (const iterator& rhs) const{
             return  m_el != rhs.m_el || m_index != rhs.m_index;
         }
 
         /**
-         *
-         * @param rhs
-         * @return
+         * Comparing a iterator with another iterator on equality.
+         * @param rhs the iterator to compare as const.
+         * @return will return true in case the iterator a the same.
          */
         bool operator == (const iterator& rhs) const{
             return m_el == rhs.m_el || m_index == rhs.m_index;
         }
 
         /**
-         *
-         * @return
+         * will postincrement a iterator.
+         * @return will return a postincremented iterator.
          */
         iterator& operator ++(){
             m_index = m_el[m_index].next;
@@ -109,8 +109,8 @@ public:
         }
 
         /**
-         *
-         * @return
+         * Will preincrement a iterator.
+         * @return will return a preincremented iterator.
          */
         iterator operator ++(int){
             ListIterator clone (m_index, m_el);
@@ -206,7 +206,7 @@ public:
 
     /**
      * Method to put a new Element in front of the free_Space_list.
-     * @param current will be the current Index.                                    //fragen
+     * @param current will be the current Index.
      */
     void einhaengen_free(int current){
         arr[start_free].prev = current;
@@ -232,10 +232,10 @@ public:
     }
 
     /**
-     *
-     * @param itr
-     * @param value
-     * @return
+     * Method to insert something at a specifed position.
+     * @param itr where to insert.
+     * @param value what to insert.
+     * @return will return a iterator pointing on the inserted object.
      */
     iterator insert(iterator itr, T& value) {
         if (empty()){
@@ -284,10 +284,10 @@ public:
 
 
     /**
-     *
-     * @param start
-     * @param stop
-     * @return
+     * Method to delete zeile-object from the linked-list.
+     * @param start Startpoint to begin deleting
+     * @param stop Stop to end deleting, is exclusive
+     * @return will return a iterator pointing on the stop element.
      */
     iterator erase(iterator start, iterator stop){
         int before_start = arr[start.m_index].prev;
@@ -310,9 +310,9 @@ public:
     }
 
     /**
-     *
-     * @param itr
-     * @return
+     * Method to delete a zeile-object at a specified position.
+     * @param itr position to delete the object
+     * @return will return a iterator.
      */
     iterator erase(iterator itr) {
         set_counter(get_counter() - 1);
@@ -355,6 +355,11 @@ public:
         return counter;
     }
 
+    /**
+     * Method to get the value of a Template Object.
+     * @param index index of the object
+     * @return will return the object form the linkedlist.
+     */
     T& get_value (int index){
         return arr[index].data;
     }
@@ -362,13 +367,13 @@ public:
 };
 
 /**
- *
- * @tparam Iterator
- * @tparam T
- * @param start
- * @param stop
- * @param value
- * @return
+ *  Method to find a object with the given value.
+ * @tparam Iterator typename
+ * @tparam T typename
+ * @param start startpoint
+ * @param stop endpoint
+ * @param value value to search for
+ * @return will retrun a iterator pointing on this value in the datastructur.
  */
 template<typename Iterator, typename T>
 Iterator find(Iterator start, Iterator stop, const T& value) {

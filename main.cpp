@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : main.cpp
 // Author      : Alexander M. Westphal / Paul Schröder
-// Version     : Alpha v0.1
+// Version     : Version 1.0
 // Copyright   : Alexander M. Westphal / Paul Schröder
-// Description : ..., Ansi-style
+// Description : Main Program
 //============================================================================
 
 #include <iostream>
@@ -22,11 +22,10 @@ void deleteStudentWithStartAndStop();
 int main() {
     int eingabe = -1;
     while (eingabe != 0){
-        cout << "Aktuell passen noch " << curs.array_size_start - curs.get_counter() << " Studenten in die Liste"<< endl;
+        cout << "Aktuell passen noch " << curs.array_size_start - curs.get_counter() << " Studenten in die Liste"<< endl << "Studenten: " << endl;
         for(CursorList<Student>::iterator it = curs.begin(); it != curs.end(); ++it) {
-            std::cout << it.m_index << " " << *it << std::endl;
+            std::cout << ">> " << it.m_index << " >> " << *it;
         }
-
         eingabe = input();
         switch(eingabe){
             case 1:
@@ -62,6 +61,10 @@ int main() {
     }
 
 
+/**
+ * Inputmenu for the user to enter a option on the commandline and execute this point.
+ * @return will return the entered value as Integer.
+ */
 int input() {
     using namespace std;
     int eingabe;
@@ -80,7 +83,9 @@ int input() {
 }
 
 
-
+/**
+ * Method to create a Student and put it in the Datastructur.
+ */
 void createStudent(){
     using namespace std;
     int i,k;
@@ -95,6 +100,9 @@ void createStudent(){
     }
 }
 
+/**
+ * Method to delete a Student.
+ */
 void deleteStudent(){
     using namespace std;
     int position;
@@ -107,6 +115,9 @@ void deleteStudent(){
     }
 }
 
+/**
+ * Method to delete a bunch of Students from a start until a specefied end.
+ */
 void deleteStudentWithStartAndStop(){
     using namespace std;
     int start, stop;
@@ -119,6 +130,10 @@ void deleteStudentWithStartAndStop(){
     }
 }
 
+
+/**
+ * Create a Student at a specified position.
+ */
 void createStudentBeforePosition(){
     using namespace std;
     int i,k, position;
