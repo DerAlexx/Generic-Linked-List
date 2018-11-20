@@ -1,3 +1,3 @@
-/home/deralex/CLionProjects/algoDat/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/deralex/CLionProjects/algoDat/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/deralex/CLionProjects/algoDat/cmake-build-debug/CMakeFiles/algoDat.dir
+C:/Users/Paul/Desktop/c++/cmake-build-debug/CMakeFiles/algoDat.dir
+C:/Users/Paul/Desktop/c++/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Paul/Desktop/c++/cmake-build-debug/CMakeFiles/rebuild_cache.dir

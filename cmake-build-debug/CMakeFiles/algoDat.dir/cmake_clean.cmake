@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/algoDat.dir/main.cpp.o"
+  "CMakeFiles/algoDat.dir/main.cpp.obj"
   "algoDat.pdb"
-  "algoDat"
+  "algoDat.exe"
+  "algoDat.exe.manifest"
+  "libalgoDat.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -136,7 +136,7 @@ public:
      * @return will return true in case it is empty else false.
      */
     bool empty() {
-        return counter <= 0;
+        return counter == 0;
     }
 
     /**
@@ -188,14 +188,15 @@ public:
      * The former second element will be the new start_Data and first Element of the List.
      */
     void pop_front(){
-        set_counter(get_counter() - 1);
         if (!empty()){
             if (get_counter() == 1){
+                set_counter(get_counter() - 1);
                 einhaengen_free(start_data);
                 start_data = -1;
             }else {
+                set_counter(get_counter() - 1);
                 int new_start_data = arr[start_data].next;
-                einhaengen_free(new_start_data);
+                einhaengen_free(start_data);
                 start_data = new_start_data;
             }
         } else {
@@ -237,11 +238,11 @@ public:
      * @return
      */
     iterator insert(iterator itr, T& value) {
-        set_counter(get_counter() + 1);
         if (empty()){
             push_front(value);
             return begin();
         } else if (itr == end()){
+            set_counter(get_counter() + 1);
             for(iterator it = begin(); it != end(); ++it) {
                 if (arr[it.m_index].next == -1){
                     int next_free = arr[start_free].next;
@@ -256,6 +257,7 @@ public:
                 }
             }
         } else if (itr == begin()){
+            set_counter(get_counter() + 1);
             int next_free = arr[start_free].next;
             arr[start_free].data = value;
             arr[start_free].prev = -1;
@@ -266,6 +268,7 @@ public:
             arr[start_free].prev = -1;
             return begin();
         } else {
+            set_counter(get_counter() + 1);
             int save = arr[itr.m_index].prev;
             int next_free = arr[start_free].next;
             arr[start_free].data = value;
@@ -338,8 +341,8 @@ public:
      * @param i value to set the counter on.
      */
     void set_counter(int i){
-        if(counter <= 0 || counter >= 30) {
-            std::cout << "error" << std::endl;
+        if(counter < 0 || counter > 30) {
+            throw std::runtime_error( "Aktion kann nicht ausgefuehrt werden " );
         }
         counter = i;
     }
@@ -352,7 +355,7 @@ public:
         return counter;
     }
 
-    T get_value (int index){
+    T& get_value (int index){
         return arr[index].data;
     }
 
@@ -376,5 +379,4 @@ Iterator find(Iterator start, Iterator stop, const T& value) {
     }
         return stop;
 }
-
 #endif // ALGODAT_CURSORLIST_H
