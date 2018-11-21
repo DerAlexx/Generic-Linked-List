@@ -238,10 +238,23 @@ public:
      * @return will return a iterator pointing on the inserted object.
      */
     iterator insert(iterator itr, T& value) {
-        if (empty()){
-            push_front(value);
-            return begin();
-        } else if (itr == end()){
+    if (empty() || itr == begin()){
+        push_front(value);
+        return begin();
+    } else if (itr != begin() || itr != end()) {
+        set_counter(get_counter() + 1);
+        int save = arr[itr.m_index].prev; // 3
+        int next_free = arr[start_free].next; // new free
+        int save_next = arr[save].next;
+        arr[start_free].data = value;
+        arr[start_free].prev = save;
+        arr[start_free].next = save_next;
+        arr[save_next].prev = start_free;
+        arr[save].next = start_free;
+        start_free = next_free;
+        arr[start_free].prev = -1;
+        return ListIterator(save, arr);
+    } else {
             set_counter(get_counter() + 1);
             for(iterator it = begin(); it != end(); ++it) {
                 if (arr[it.m_index].next == -1){
@@ -256,32 +269,8 @@ public:
                     return ListIterator(ret, arr);
                 }
             }
-        } else if (itr == begin()){
-            set_counter(get_counter() + 1);
-            int next_free = arr[start_free].next;
-            arr[start_free].data = value;
-            arr[start_free].prev = -1;
-            arr[start_free].next = itr.m_index;
-            arr[start_data].prev = start_free;
-            start_data = start_free;
-            start_free = next_free;
-            arr[start_free].prev = -1;
-            return begin();
-        } else {
-            set_counter(get_counter() + 1);
-            int save = arr[itr.m_index].prev;
-            int next_free = arr[start_free].next;
-            arr[start_free].data = value;
-            arr[start_free].prev = save;
-            arr[start_free].next = itr.m_index;
-            arr[itr.m_index].prev = start_free;
-            arr[save].next = start_free;
-            start_free = next_free;
-            arr[start_free].prev = -1;
-            return ListIterator(save, arr);
         }
     }
-
 
     /**
      * Method to delete zeile-object from the linked-list.
@@ -289,25 +278,28 @@ public:
      * @param stop Stop to end deleting, is exclusive
      * @return will return a iterator pointing on the stop element.
      */
-    iterator erase(iterator start, iterator stop){
-        int before_start = arr[start.m_index].prev;
-        for(iterator it = start; it != stop; ++it) {
-            set_counter(get_counter() - 1);
-            einhaengen_free(it.m_index);
-        }
-        if (start == begin() && stop == end()){
-            start_data = -1;
-        } else if (start != begin() && stop != end()){
-            arr[before_start].next = stop.m_index;
-            arr[stop.m_index].prev = before_start;
-        } else if (start == begin() && stop != end()) {
-            start_data = stop.m_index;
-            arr[start_data].prev = -1;
+    iterator erase(iterator start, iterator stop) {
+        int startPos = start.m_index;
+        int endPos = stop.m_index;
+        int a = arr[start.m_index].prev;
+        int b = start.m_index;
+        int c = arr[stop.m_index].prev;
+
+        if (startPos == start_data) {
+            while (start != stop) {
+                start++;
+                pop_front();
+            }
+            return stop;
         } else {
-            arr[before_start].next = -1;
+            arr[b].prev = -1;
+            arr[c].next = start_free;
+            arr[a].next = endPos;
+            arr[endPos].prev = a;
+            start_free = b;
+            return stop;
         }
-        return stop;
-    }
+    };
 
     /**
      * Method to delete a zeile-object at a specified position.
@@ -315,26 +307,27 @@ public:
      * @return will return a iterator.
      */
     iterator erase(iterator itr) {
-        set_counter(get_counter() - 1);
-        int next_itr;
-        int prev_itr;
-
-        if (itr == begin()){
-            next_itr = arr[itr.m_index].next;
-            einhaengen_free(itr.m_index);
-            start_data = next_itr;
-            arr[start_data].prev = -1;
-            return ListIterator(start_data, arr);
-        } else if (itr != begin() && itr != end()){
-            next_itr = arr[itr.m_index].next;
-            prev_itr = arr[itr.m_index].prev;
-            einhaengen_free(itr.m_index);
-            arr[prev_itr].next = next_itr;
-            arr[next_itr].prev = prev_itr;
+        if (itr.m_index == start_data) {
+            ++itr;
+            pop_front();
+            return itr;
         } else {
-            throw std::runtime_error( "Dieses Elemement kann nicht geloescht werden " );
+            int posToDelete = itr.m_index;
+            int posBeforeDelete = arr[itr.m_index].prev;
+            int posAfterDelete = arr[itr.m_index].next;
+
+            ++itr;
+
+            arr[posBeforeDelete].next = posAfterDelete;
+            arr[posAfterDelete].prev = posBeforeDelete;
+            arr[posToDelete].prev = -1;
+            arr[posToDelete].next = start_free;
+            arr[start_free].prev = posToDelete;
+            start_free = posToDelete;
+
+            return itr;
         }
-    }
+    };
 
     /**
      * Setter for the counter.
@@ -377,7 +370,7 @@ public:
  */
 template<typename Iterator, typename T>
 Iterator find(Iterator start, Iterator stop, const T& value) {
-    for(typename CursorList<T>::iterator it = start; it != stop; ++it) {
+    for(typename CursorList<T>::iterator it = start; it != stop; it++) {
         if(*it == value) {
             return it;
         }

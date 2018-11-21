@@ -1,3 +1,3 @@
-/home/deralex/Schreibtisch/jj/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/deralex/Schreibtisch/jj/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/deralex/Schreibtisch/jj/cmake-build-debug/CMakeFiles/algoDat.dir
+C:/Users/alexw/Desktop/algoDat1Final/cmake-build-debug/CMakeFiles/algoDat.dir
+C:/Users/alexw/Desktop/algoDat1Final/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/alexw/Desktop/algoDat1Final/cmake-build-debug/CMakeFiles/rebuild_cache.dir

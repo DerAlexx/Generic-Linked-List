@@ -22,9 +22,9 @@ void deleteStudentWithStartAndStop();
 int main() {
     int eingabe = -1;
     while (eingabe != 0){
-        cout << "Aktuell passen noch " << curs.array_size_start - curs.get_counter() << " Studenten in die Liste"<< endl << "Studenten: " << endl;
+        cout << "Studenten: " << endl;
         for(CursorList<Student>::iterator it = curs.begin(); it != curs.end(); ++it) {
-            std::cout << ">> " << it.m_index << " >> " << *it;
+            std::cout << it.m_index << " " << *it;
         }
         eingabe = input();
         switch(eingabe){
@@ -90,14 +90,15 @@ void createStudent(){
     using namespace std;
     int i,k;
     char u[10],j[10];
-    cout << "Geben sie eine Matrikelnummer, einen Geburtstag der Form (040219) sowie einen Namen und einen Vornamen ein" << endl;
+    cout << "Geben sie eine Matrikelnummer, einen Geburtstag der Form (04021998) sowie einen Namen und einen Vornamen ein" << endl;
+    cout << "Beispiel: 666 06066666 Johanny Satan \n";
     cin >> i >> k >> u >> j;
-    Student abc(i, u, j ,k);
-    try {
-        curs.push_front(abc);
-    } catch (...) {
-        cout << "Error Occured Data Struct is full" << endl;
-    }
+        Student abc(i, u, j ,k);
+        try {
+            curs.push_front(abc);
+        } catch (...) {
+            cout << "Error Occured Data Struct is full" << endl;
+        }
 }
 
 /**
@@ -108,11 +109,11 @@ void deleteStudent(){
     int position;
     cout << "Geben sie die Position eines Studenten ein, der geloescht werden soll" << endl;
     cin >> position;
-    try {
-        curs.erase(::find(curs.begin(), curs.end(), curs.get_value(position)));
-    } catch (...) {
-        cout << "Error Occured Data Struct is full" << endl;
-    }
+        try {
+            curs.erase(CursorList<Student>::ListIterator(position, curs.arr));
+        } catch (...) {
+            cout << "Error Occured Data Struct is full" << endl;
+        }
 }
 
 /**
@@ -123,11 +124,11 @@ void deleteStudentWithStartAndStop(){
     int start, stop;
     cout << "Geben Sie einen Start und Endpunkt ein, in dem alle Studenten geloescht werden" << endl;
     cin >> start >> stop;
-    try {
-        curs.erase(::find(curs.begin(), curs.end(), curs.get_value(start)), ::find(curs.begin(), curs.end(), curs.get_value(stop)));
-    } catch (...) {
-        cout << "Error Occured Data Struct is full" << endl;
-    }
+        try {
+            curs.erase(::find(curs.begin(), curs.end(), curs.get_value(start)), ::find(curs.begin(), curs.end(), curs.get_value(stop)));
+        } catch (...) {
+            cout << "Error Occured Data Struct is full" << endl;
+        }
 }
 
 
@@ -141,9 +142,9 @@ void createStudentBeforePosition(){
     cout << "Geben sie eine Matrikelnummer, einen Geburtstag der Form (40298 fuer 4.02.1998), einen Namen, einen Vornamen und eine Position ein" << endl;
     cin >> i >> k >> u >> j >> position;
     Student abc(i, u, j ,k);
-    try {
-        curs.insert(::find(curs.begin(), curs.end(), curs.get_value(position)), abc);
-    } catch (...) {
-        cout << "Error Occured Data Struct is full" << endl;
-    }
+        try {
+            curs.insert(::find(curs.begin(), curs.end(), curs.get_value(position)), abc);
+        } catch (...) {
+            cout << "Error Occured Data Struct is full" << endl;
+        }
 }
