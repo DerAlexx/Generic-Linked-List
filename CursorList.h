@@ -253,7 +253,6 @@ public:
         arr[save].next = start_free;
         start_free = next_free;
         arr[start_free].prev = -1;
-        return ListIterator(save, arr);
     } else {
             set_counter(get_counter() + 1);
             for(iterator it = begin(); it != end(); ++it) {
@@ -265,11 +264,10 @@ public:
                     arr[it.m_index].next = start_free;
                     start_free = next_free;
                     arr[start_free].prev = -1;
-                    int ret = arr[it.m_index].next;
-                    return ListIterator(ret, arr);
                 }
             }
         }
+        return itr;
     }
 
     /**
@@ -279,26 +277,23 @@ public:
      * @return will return a iterator pointing on the stop element.
      */
     iterator erase(iterator start, iterator stop) {
-        int startPos = start.m_index;
-        int endPos = stop.m_index;
-        int a = arr[start.m_index].prev;
-        int b = start.m_index;
-        int c = arr[stop.m_index].prev;
-
-        if (startPos == start_data) {
-            while (start != stop) {
-                start++;
-                pop_front();
-            }
-            return stop;
-        } else {
-            arr[b].prev = -1;
-            arr[c].next = start_free;
-            arr[a].next = endPos;
-            arr[endPos].prev = a;
-            start_free = b;
-            return stop;
+        int before_start = arr[start.m_index].prev;
+        for(iterator it = start; it != stop; ++it) {
+            set_counter(get_counter() - 1);
+            einhaengen_free(it.m_index);
         }
+        if (start == begin() && stop == end()){
+            start_data = -1;
+        } else if (start != begin() && stop != end()){
+            arr[before_start].next = stop.m_index;
+            arr[stop.m_index].prev = before_start;
+        } else if (start == begin() && stop != end()) {
+            start_data = stop.m_index;
+            arr[start_data].prev = -1;
+        } else {
+            arr[before_start].next = -1;
+        }
+        return stop;
     };
 
     /**
