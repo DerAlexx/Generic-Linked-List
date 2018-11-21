@@ -276,25 +276,49 @@ public:
      * @param stop Stop to end deleting, is exclusive
      * @return will return a iterator pointing on the stop element.
      */
-    iterator erase(iterator start, iterator stop) {
+    iterator erase(iterator start, iterator stop){
         int before_start = arr[start.m_index].prev;
-        for(iterator it = start; it != stop; ++it) {
-            set_counter(get_counter() - 1);
-            einhaengen_free(it.m_index);
-        }
+        iterator ab  = begin();
         if (start == begin() && stop == end()){
+            while (start != stop) {
+                set_counter(get_counter() - 1);
+                pop_front();
+                ++start;
+
+            }
             start_data = -1;
+        } else if (start == begin() && stop != end()) {
+            while (start != stop) {
+                set_counter(get_counter() - 1);
+                pop_front();
+                ++start;
+            }
         } else if (start != begin() && stop != end()){
+
+            while (ab != start) {
+                ++ab;
+            }
+            while (ab != stop) {
+                set_counter(get_counter() - 1);
+                erase(ab);
+                ++ab;
+
+            }
             arr[before_start].next = stop.m_index;
             arr[stop.m_index].prev = before_start;
-        } else if (start == begin() && stop != end()) {
-            start_data = stop.m_index;
-            arr[start_data].prev = -1;
-        } else {
+        }  else {
+            while (ab != start) {
+                ++ab;
+            }
+            while (ab != stop) {
+                set_counter(get_counter() - 1);
+                erase(ab);
+                ++ab;
+            }
             arr[before_start].next = -1;
         }
         return stop;
-    };
+    }
 
     /**
      * Method to delete a zeile-object at a specified position.

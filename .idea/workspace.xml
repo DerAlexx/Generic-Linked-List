@@ -14,10 +14,8 @@
     <list default="true" id="4623b95d-e051-4892-bb21-b928c0cc5c11" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CursorList.h" beforeDir="false" afterPath="$PROJECT_DIR$/CursorList.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algoDat.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algoDat.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algoDat.dir/vc140.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/algoDat.dir/vc140.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/algoDat.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algoDat.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/algoDat.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algoDat.ilk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/algoDat.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algoDat.pdb" afterDir="false" />
@@ -122,13 +120,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cpp" value="347" />
-          <entry key="h" value="454" />
+          <entry key="h" value="468" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="800" />
+          <entry key="ObjectiveC" value="814" />
         </counts>
       </usages-collector>
     </session>
@@ -150,8 +148,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CursorList.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="295" column="20" selection-start-line="295" selection-start-column="20" selection-end-line="295" selection-end-column="20" />
+            <state relative-caret-position="611">
+              <caret line="315" column="21" selection-start-line="315" selection-start-column="21" selection-end-line="315" selection-end-column="21" />
               <folding>
                 <element signature="e#501#513#0" expanded="true" />
               </folding>
@@ -258,12 +256,12 @@
       <workItem from="1542665269911" duration="2589000" />
       <workItem from="1542710407827" duration="5599000" />
       <workItem from="1542739800304" duration="2544000" />
-      <workItem from="1542817724160" duration="17469000" />
+      <workItem from="1542817724160" duration="18450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28201000" />
+    <option name="totallyTimeSpent" value="29182000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -289,7 +287,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.2635575" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.69305855" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32104123" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32939914" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
@@ -353,8 +351,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CursorList.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="295" column="20" selection-start-line="295" selection-start-column="20" selection-end-line="295" selection-end-column="20" />
+        <state relative-caret-position="611">
+          <caret line="315" column="21" selection-start-line="315" selection-start-column="21" selection-end-line="315" selection-end-column="21" />
           <folding>
             <element signature="e#501#513#0" expanded="true" />
           </folding>
