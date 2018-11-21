@@ -371,7 +371,7 @@ public:
 template<typename Iterator, typename T>
 Iterator find(Iterator start, Iterator stop, const T& value) {
     for(typename CursorList<T>::iterator it = start; it != stop; it++) {
-        if(*it == value) {
+        if(it.m_el[it.m_index].data == value) {
             return it;
         }
     }
