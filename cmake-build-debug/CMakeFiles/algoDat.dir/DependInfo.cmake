@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/deralex/Schreibtisch/jj/main.cpp" "/home/deralex/Schreibtisch/jj/cmake-build-debug/CMakeFiles/algoDat.dir/main.cpp.o"
+  "/home/deralex/Schreibtisch/finalalgo/main.cpp" "/home/deralex/Schreibtisch/finalalgo/cmake-build-debug/CMakeFiles/algoDat.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
