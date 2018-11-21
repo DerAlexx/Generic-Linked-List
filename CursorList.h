@@ -238,22 +238,22 @@ public:
      * @return will return a iterator pointing on the inserted object.
      */
     iterator insert(iterator itr, T& value) {
-    if (empty() || itr == begin()){
-        push_front(value);
-        return begin();
-    } else if (itr != begin() || itr != end()) {
-        set_counter(get_counter() + 1);
-        int save = arr[itr.m_index].prev; // 3
-        int next_free = arr[start_free].next; // new free
-        int save_next = arr[save].next;
-        arr[start_free].data = value;
-        arr[start_free].prev = save;
-        arr[start_free].next = save_next;
-        arr[save_next].prev = start_free;
-        arr[save].next = start_free;
-        start_free = next_free;
-        arr[start_free].prev = -1;
-    } else {
+        if (empty() || itr == begin()){
+            push_front(value);
+            return begin();
+        } else if (itr != begin() || itr != end()) {
+            set_counter(get_counter() + 1);
+            int save = arr[itr.m_index].prev; // 3
+            int next_free = arr[start_free].next; // new free
+            int save_next = arr[save].next;
+            arr[start_free].data = value;
+            arr[start_free].prev = save;
+            arr[start_free].next = save_next;
+            arr[save_next].prev = start_free;
+            arr[save].next = start_free;
+            start_free = next_free;
+            arr[start_free].prev = -1;
+        } else {
             set_counter(get_counter() + 1);
             for(iterator it = begin(); it != end(); ++it) {
                 if (arr[it.m_index].next == -1){
@@ -278,42 +278,28 @@ public:
      */
     iterator erase(iterator start, iterator stop){
         int before_start = arr[start.m_index].prev;
-        iterator ab  = begin();
         if (start == begin() && stop == end()){
             while (start != stop) {
-                set_counter(get_counter() - 1);
                 pop_front();
                 ++start;
-
             }
             start_data = -1;
         } else if (start == begin() && stop != end()) {
             while (start != stop) {
-                set_counter(get_counter() - 1);
                 pop_front();
                 ++start;
             }
+            arr[stop.m_index].prev = -1;
+            start_data = stop.m_index;
         } else if (start != begin() && stop != end()){
-
-            while (ab != start) {
-                ++ab;
-            }
-            while (ab != stop) {
-                set_counter(get_counter() - 1);
-                erase(ab);
-                ++ab;
-
+            for(iterator it = start; it != stop; ++it) {
+                erase(it);
             }
             arr[before_start].next = stop.m_index;
             arr[stop.m_index].prev = before_start;
         }  else {
-            while (ab != start) {
-                ++ab;
-            }
-            while (ab != stop) {
-                set_counter(get_counter() - 1);
-                erase(ab);
-                ++ab;
+            for(iterator it = start; it != stop; ++it) {
+                erase(it);
             }
             arr[before_start].next = -1;
         }
