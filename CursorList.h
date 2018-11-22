@@ -128,7 +128,7 @@ public:
         for (int i = 0; i < array_size_start - 1; i++) {
             arr[i] = zeile(i - 1, i + 1);
         }
-        arr[array_size_start] = zeile(array_size_start - 1, -1);
+        arr[array_size_start - 1] = zeile(array_size_start - 2, -1);
     }
 
     /**
@@ -174,6 +174,7 @@ public:
             start_free = next_free;
         } else  {
             set_counter(get_counter() + 1);
+            arr[arr[start_free].next].prev = -1;
             arr[start_data].prev = start_free;
             arr[start_free].data = para;
             arr[start_free].prev = -1;
@@ -210,6 +211,7 @@ public:
      */
     void einhaengen_free(int current){
         arr[start_free].prev = current;
+        arr[arr[current].next].prev = -1;
         arr[current].next = start_free;
         arr[current].prev = -1;
         start_free = current;
@@ -238,7 +240,8 @@ public:
      * @return will return a iterator pointing on the inserted object.
      */
     iterator insert(iterator itr, T& value) {
-        if (empty() || itr == begin()){
+        std::cout << "-------->> " << CursorList::get_counter() << " ----> " << itr.m_index << std::endl;
+        if (itr.m_index == start_data){ // TRUE
             push_front(value);
             return begin();
         } else if (itr != begin() || itr != end()) {
@@ -277,31 +280,8 @@ public:
      * @return will return a iterator pointing on the stop element.
      */
     iterator erase(iterator start, iterator stop){
-        int before_start = arr[start.m_index].prev;
-        if (start == begin() && stop == end()){
-            while (start != stop) {
-                pop_front();
-                ++start;
-            }
-            start_data = -1;
-        } else if (start == begin() && stop != end()) {
-            while (start != stop) {
-                pop_front();
-                ++start;
-            }
-            arr[stop.m_index].prev = -1;
-            start_data = stop.m_index;
-        } else if (start != begin() && stop != end()){
-            for(iterator it = start; it != stop; ++it) {
+        for(iterator it = start; it != stop; it++) {
                 erase(it);
-            }
-            arr[before_start].next = stop.m_index;
-            arr[stop.m_index].prev = before_start;
-        }  else {
-            for(iterator it = start; it != stop; ++it) {
-                erase(it);
-            }
-            arr[before_start].next = -1;
         }
         return stop;
     }
@@ -320,16 +300,13 @@ public:
             int posToDelete = itr.m_index;
             int posBeforeDelete = arr[itr.m_index].prev;
             int posAfterDelete = arr[itr.m_index].next;
-
             ++itr;
-
             arr[posBeforeDelete].next = posAfterDelete;
             arr[posAfterDelete].prev = posBeforeDelete;
             arr[posToDelete].prev = -1;
             arr[posToDelete].next = start_free;
             arr[start_free].prev = posToDelete;
             start_free = posToDelete;
-
             return itr;
         }
     };
@@ -380,6 +357,6 @@ Iterator find(Iterator start, Iterator stop, const T& value) {
             return it;
         }
     }
-        return stop;
+    return stop;
 }
 #endif // ALGODAT_CURSORLIST_H

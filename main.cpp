@@ -19,47 +19,54 @@ void deleteStudent();
 void createStudentBeforePosition();
 void deleteStudentWithStartAndStop();
 
-int main() {
-    int eingabe = -1;
-    while (eingabe != 0){
-        cout << "Studenten: " << endl;
-        for(CursorList<Student>::iterator it = curs.begin(); it != curs.end(); ++it) {
-            std::cout << it.m_index << " " << *it;
-        }
-        eingabe = input();
-        switch(eingabe){
-            case 1:
-                createStudent();
-                break;
-            case 2:
-                createStudentBeforePosition();
-                break;
-            case 3:
-                curs.pop_front();
-                break;
-            case 4:
-                deleteStudent();
-                break;
-            case 5:
-                deleteStudentWithStartAndStop();
-                break;
-            case 6:
-                std::cout << curs.front() << std::endl;
-                break;
-            case 7:
-                std::cout << curs.get_counter() << std::endl;
-                break;
-            case 8:
-                eingabe = 0;
-                break;
-            default:
-                std::cout << "falsche eingabe";
-                break;
-            }
-        }
-        return 0;
-    }
 
+
+int main() {
+
+    Student julien = Student(111 , "Julien", "Peuker",  90909);
+    Student klaus = Student(999  ,"Klaus", "Boss", 11111);
+    Student thomas = Student(815, "Thomas", "Pumper", 7777);
+    Student reneEgo10 = Student(666, "a", "Lauch", 6666);
+
+
+    CursorList <Student> list;
+
+
+    cout << "startdata " <<list.start_data << endl;
+    cout <<"startfree "<< list.start_free << endl;
+    cout << "Index:0 "<< list.arr[0].data.getName() << " |prev: " << list.arr[0].prev << " |next: " << list.arr[0].next << endl;
+    cout<< "Index:1 " << list.arr[1].data.getName() << " |prev: " << list.arr[1].prev << " |next: " << list.arr[1].next << endl;
+    cout << "Index:2 "<< list.arr[2].data.getName() << " |prev: " << list.arr[2].prev << " |next: " << list.arr[2].next << endl;
+    cout << "Index:3 "<< list.arr[3].data.getName() << " |prev: " << list.arr[3].prev << " |next: " << list.arr[3].next << endl;
+    cout << "Index:4 "<< list.arr[4].data.getName() << " |prev: " << list.arr[4].prev << " |next: " << list.arr[4].next << endl;
+
+    list.push_front(klaus);
+    list.push_front(reneEgo10);
+    list.push_front(thomas);
+
+    cout << "startdata " <<list.start_data << endl;
+    cout <<"startfree "<< list.start_free << endl;
+    cout << "Index:0 "<< list.arr[0].data.getName() << " |prev: " << list.arr[0].prev << " |next: " << list.arr[0].next << endl;
+    cout<< "Index:1 " << list.arr[1].data.getName() << " |prev: " << list.arr[1].prev << " |next: " << list.arr[1].next << endl;
+    cout << "Index:2 "<< list.arr[2].data.getName() << " |prev: " << list.arr[2].prev << " |next: " << list.arr[2].next << endl;
+    cout << "Index:3 "<< list.arr[3].data.getName() << " |prev: " << list.arr[3].prev << " |next: " << list.arr[3].next << endl;
+    cout << "Index:4 "<< list.arr[4].data.getName() << " |prev: " << list.arr[4].prev << " |next: " << list.arr[4].next << endl;
+
+    //list.insert(CursorList<Student>::ListIterator(2, list.arr), julien);
+    list.erase(CursorList<Student>::ListIterator(2, list.arr), CursorList<Student>::ListIterator(0, list.arr));
+
+
+
+    cout << "startdata " <<list.start_data << endl;
+    cout <<"startfree "<< list.start_free << endl;
+    cout << "Index:0 "<< list.arr[0].data.getName() << " |prev: " << list.arr[0].prev << " |next: " << list.arr[0].next << endl;
+    cout<< "Index:1 " << list.arr[1].data.getName() << " |prev: " << list.arr[1].prev << " |next: " << list.arr[1].next << endl;
+    cout << "Index:2 "<< list.arr[2].data.getName() << " |prev: " << list.arr[2].prev << " |next: " << list.arr[2].next << endl;
+    cout << "Index:3 "<< list.arr[3].data.getName() << " |prev: " << list.arr[3].prev << " |next: " << list.arr[3].next << endl;
+    cout << "Index:4 "<< list.arr[4].data.getName() << " |prev: " << list.arr[4].prev << " |next: " << list.arr[4].next << endl;
+    cout << "Index:4 "<< list.arr[29].data.getName() << " |prev: " << list.arr[29].prev << " |next: " << list.arr[29].next << endl;
+
+}
 
 /**
  * Inputmenu for the user to enter a option on the commandline and execute this point.
