@@ -296,34 +296,32 @@ public:
      * @return will return a iterator.
      */
     iterator erase(iterator itr) {
-        ListIterator back=itr;
-        back.m_index = arr[itr.m_index].next;
+        ListIterator itr1 = itr;
+        itr1.m_index = arr[itr.m_index].next;
         bool delete_ = false;
-        if(size()==0){
-            cerr << "Fehler ! Listen ende erreicht" << endl;
+        if(size() == 0){
+            cout << "List is already empty" << endl;
             delete_ = true;
         }
         if(size() == 1){
             set_counter(get_counter() - 1);
-            if(start_data!=itr.m_index){
-                cerr << "Itr zeig auf falsches m_Index ! " << endl;
+            if(start_data != itr.m_index){
+                cout << "Illegal State" << endl;
             }
             einhaengen_free(itr.m_index);
             start_data = -1;
             delete_ = true;
         }
-
         else if (arr[itr.m_index].prev == -1) {
             set_counter(get_counter() - 1);
-            arr[arr[itr.m_index].next].prev=-1;
-            start_data=arr[itr.m_index].next;
+            arr[arr[itr.m_index].next].prev = -1;
+            start_data = arr[itr.m_index].next;
             arr[itr.m_index].prev = -1;
-            arr[start_free].prev=itr.m_index;
+            arr[start_free].prev = itr.m_index;
             arr[itr.m_index].next = start_free;
             start_free = itr.m_index;
             delete_ = true;
         }
-        // wenn man letztes Element löscht
         else if (arr[itr.m_index].next == -1) {
             set_counter(get_counter() - 1);
             arr[arr[itr.m_index].prev].next = -1;
@@ -335,18 +333,18 @@ public:
         }
         if (delete_ == false) {
             set_counter(get_counter() - 1);
-            arr[arr[itr.m_index].prev].next= arr[itr.m_index].next;
-            arr[arr[itr.m_index].next].prev= arr[itr.m_index].prev;
+            arr[arr[itr.m_index].prev].next = arr[itr.m_index].next;
+            arr[arr[itr.m_index].next].prev = arr[itr.m_index].prev;
             arr[itr.m_index].prev = -1;
             arr[itr.m_index].next = start_free;
-            arr[start_free].prev=itr.m_index;
+            arr[start_free].prev = itr.m_index;
             start_free = itr.m_index;
 
         }
-        if(back.m_index != -1){
-            return back;
+        if(itr1.m_index != -1){
+            return itr1;
         }else {
-            cerr << "es wurde das letzte Element der Liste gelöscht daher gibt es kein ++itr" << endl;
+            cout << "Deleted last element in the list" << endl;
             return end();
         }
     };
@@ -393,7 +391,7 @@ public:
 template<typename Iterator, typename T>
 Iterator find(Iterator start, Iterator stop, const T& value) {
     for(typename CursorList<T>::iterator it = start; it != stop; ++it) {
-        if(*it == value) {
+        if(it.m_el[it.m_index].data == value) {
             return it;
         }
     }

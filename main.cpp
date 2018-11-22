@@ -19,12 +19,14 @@ void createStudent();
 void deleteStudent();
 void createStudentBeforePosition();
 void deleteStudentWithStartAndStop();
+int finde();
 
 
 int main() {
     int eingabe = -1;
+    std::cout << "Das Programm funktioniert nur mit gueltigen Eingaben!!" << std::endl;
     while (eingabe != 0){
-        cout << "Aktuell passen noch " << curs.array_size_start - curs.get_counter() << " Studenten in die Liste"<< endl << "Studenten: " << endl;
+        std::cout << "Aktuell passen noch " << curs.array_size_start - curs.get_counter() << " Studenten in die Liste"<< std::endl << "Studenten: " << std::endl;
         for(CursorList<Student>::iterator it = curs.begin(); it != CursorList<Student>::iterator(-1, curs.arr); ++it) {
             std::cout << it.m_index << " " << *it << std::endl;
         }
@@ -52,6 +54,9 @@ int main() {
                 std::cout << curs.get_counter() << std::endl;
                 break;
             case 8:
+                std::cout << "Student ist an Position: " << finde() << std::endl;
+                break;
+            case 9:
                 eingabe = 0;
                 break;
             default:
@@ -77,7 +82,8 @@ int input() {
     cout << "(5) mehrere Studenten an bestimmter Stelle entfernen" << endl;
     cout << "(6) Wie lautet der erste Student in der Liste " << endl;
     cout << "(7) aktuelle Studentenanzahl in CursorList" << endl;
-    cout << "(8) Fertig" << endl;
+    cout << "(8) finde einen Studenten" << endl;
+    cout << "(9) Fertig" << endl;
     cout << "Eingabe: ";
     cin >> eingabe;
     return eingabe;
@@ -149,4 +155,20 @@ void createStudentBeforePosition(){
         } catch (...) {
             cout << "Error Occured Data Struct is full" << endl;
         }
+}
+
+int finde() {
+    using namespace std;
+    int i,k;
+    char u[10],j[10];
+    cout << "Geben sie eine Matrikelnummer, einen Geburtstag, einen Namen, einen Vornamen" << endl;
+    cout << "Beispiel: 111 04021998 Paula Schrot \n";
+    cin >> i >> k >> u >> j;
+    Student abc(i, u, j ,k);
+    try {
+        return ::find(curs.begin(), curs.end(), abc).m_index;
+    } catch (...) {
+        cout << "Error Occured Data Struct is full" << endl;
+    }
+    return 0;
 }
