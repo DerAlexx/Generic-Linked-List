@@ -4,6 +4,7 @@
 // Version     : Version 1.0
 // Copyright   : Alexander M. Westphal / Paul Schröder
 // Description : Main Program
+// Compiler and C++ Version: GNU GCC / C++11 Standard
 //============================================================================
 
 #include <iostream>
@@ -20,52 +21,47 @@ void createStudentBeforePosition();
 void deleteStudentWithStartAndStop();
 
 
-
 int main() {
+    int eingabe = -1;
+    while (eingabe != 0){
+        cout << "Aktuell passen noch " << curs.array_size_start - curs.get_counter() << " Studenten in die Liste"<< endl << "Studenten: " << endl;
+        for(CursorList<Student>::iterator it = curs.begin(); it != CursorList<Student>::iterator(-1, curs.arr); ++it) {
+            std::cout << it.m_index << " " << *it << std::endl;
 
-    Student julien = Student(111 , "Julien", "Peuker",  90909);
-    Student klaus = Student(999  ,"Klaus", "Boss", 11111);
-    Student thomas = Student(815, "Thomas", "Pumper", 7777);
-    Student reneEgo10 = Student(666, "a", "Lauch", 6666);
+        }
 
-
-    CursorList <Student> list;
-
-
-    cout << "startdata " <<list.start_data << endl;
-    cout <<"startfree "<< list.start_free << endl;
-    cout << "Index:0 "<< list.arr[0].data.getName() << " |prev: " << list.arr[0].prev << " |next: " << list.arr[0].next << endl;
-    cout<< "Index:1 " << list.arr[1].data.getName() << " |prev: " << list.arr[1].prev << " |next: " << list.arr[1].next << endl;
-    cout << "Index:2 "<< list.arr[2].data.getName() << " |prev: " << list.arr[2].prev << " |next: " << list.arr[2].next << endl;
-    cout << "Index:3 "<< list.arr[3].data.getName() << " |prev: " << list.arr[3].prev << " |next: " << list.arr[3].next << endl;
-    cout << "Index:4 "<< list.arr[4].data.getName() << " |prev: " << list.arr[4].prev << " |next: " << list.arr[4].next << endl;
-
-    list.push_front(klaus);
-    list.push_front(reneEgo10);
-    list.push_front(thomas);
-
-    cout << "startdata " <<list.start_data << endl;
-    cout <<"startfree "<< list.start_free << endl;
-    cout << "Index:0 "<< list.arr[0].data.getName() << " |prev: " << list.arr[0].prev << " |next: " << list.arr[0].next << endl;
-    cout<< "Index:1 " << list.arr[1].data.getName() << " |prev: " << list.arr[1].prev << " |next: " << list.arr[1].next << endl;
-    cout << "Index:2 "<< list.arr[2].data.getName() << " |prev: " << list.arr[2].prev << " |next: " << list.arr[2].next << endl;
-    cout << "Index:3 "<< list.arr[3].data.getName() << " |prev: " << list.arr[3].prev << " |next: " << list.arr[3].next << endl;
-    cout << "Index:4 "<< list.arr[4].data.getName() << " |prev: " << list.arr[4].prev << " |next: " << list.arr[4].next << endl;
-
-    //list.insert(CursorList<Student>::ListIterator(2, list.arr), julien);
-    list.erase(CursorList<Student>::ListIterator(2, list.arr), CursorList<Student>::ListIterator(0, list.arr));
-
-
-
-    cout << "startdata " <<list.start_data << endl;
-    cout <<"startfree "<< list.start_free << endl;
-    cout << "Index:0 "<< list.arr[0].data.getName() << " |prev: " << list.arr[0].prev << " |next: " << list.arr[0].next << endl;
-    cout<< "Index:1 " << list.arr[1].data.getName() << " |prev: " << list.arr[1].prev << " |next: " << list.arr[1].next << endl;
-    cout << "Index:2 "<< list.arr[2].data.getName() << " |prev: " << list.arr[2].prev << " |next: " << list.arr[2].next << endl;
-    cout << "Index:3 "<< list.arr[3].data.getName() << " |prev: " << list.arr[3].prev << " |next: " << list.arr[3].next << endl;
-    cout << "Index:4 "<< list.arr[4].data.getName() << " |prev: " << list.arr[4].prev << " |next: " << list.arr[4].next << endl;
-    cout << "Index:4 "<< list.arr[29].data.getName() << " |prev: " << list.arr[29].prev << " |next: " << list.arr[29].next << endl;
-
+        eingabe = input();
+        switch(eingabe){
+            case 1:
+                createStudent();
+                break;
+            case 2:
+                createStudentBeforePosition();
+                break;
+            case 3:
+                curs.pop_front();
+                break;
+            case 4:
+                deleteStudent();
+                break;
+            case 5:
+                deleteStudentWithStartAndStop();
+                break;
+            case 6:
+                std::cout << curs.front() << std::endl;
+                break;
+            case 7:
+                std::cout << curs.get_counter() << std::endl;
+                break;
+            case 8:
+                eingabe = 0;
+                break;
+            default:
+                std::cout << "falsche eingabe";
+                break;
+        }
+    }
+    return 0;
 }
 
 /**
@@ -82,7 +78,7 @@ int input() {
     cout << "(4) Student an bestimmter Stelle entfernen " << endl;
     cout << "(5) mehrere Studenten an bestimmter Stelle entfernen" << endl;
     cout << "(6) Wie lautet der erste Student in der Liste " << endl;
-    cout << "(7) aktuelle Studentenanzahl in CursorList" << "/n" << endl;
+    cout << "(7) aktuelle Studentenanzahl in CursorList" << endl;
     cout << "(8) Fertig" << endl;
     cout << "Eingabe: ";
     cin >> eingabe;
@@ -117,7 +113,7 @@ void deleteStudent(){
     cout << "Geben sie die Position eines Studenten ein, der geloescht werden soll" << endl;
     cin >> position;
         try {
-            curs.erase(CursorList<Student>::ListIterator(position, curs.arr));
+            curs.erase(CursorList<Student>::ListIterator(position, curs.arr)); //CursorList<Student>::ListIterator(position, curs.arr)
         } catch (...) {
             cout << "Error Occured Data Struct is full" << endl;
         }
@@ -132,7 +128,7 @@ void deleteStudentWithStartAndStop(){
     cout << "Geben Sie einen Start und Endpunkt ein, in dem alle Studenten geloescht werden" << endl;
     cin >> start >> stop;
         try {
-            curs.erase(::find(curs.begin(), curs.end(), curs.get_value(start)), ::find(curs.begin(), curs.end(), curs.get_value(stop)));
+            curs.erase(CursorList<Student>::ListIterator(start, curs.arr), CursorList<Student>::ListIterator(stop, curs.arr));
         } catch (...) {
             cout << "Error Occured Data Struct is full" << endl;
         }
@@ -150,7 +146,7 @@ void createStudentBeforePosition(){
     cin >> i >> k >> u >> j >> position;
     Student abc(i, u, j ,k);
         try {
-            curs.insert(::find(curs.begin(), curs.end(), curs.get_value(position)), abc);
+            curs.insert(CursorList<Student>::ListIterator(position, curs.arr), abc);
         } catch (...) {
             cout << "Error Occured Data Struct is full" << endl;
         }

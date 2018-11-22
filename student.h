@@ -4,6 +4,7 @@
 // Version     : Version 1.0
 // Copyright   : Alexander M. Westphal / Paul Schröder
 // Description : Header-File for the Sutdent Object.
+// Compiler and C++ Version: GNU GCC / C++11 Standard
 //============================================================================
 
 #include <ostream>

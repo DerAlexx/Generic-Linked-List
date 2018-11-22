@@ -4,6 +4,7 @@
 // Version     : Version 1.0
 // Copyright   : Alexander M. Westphal / Paul Schröder
 // Description : Studentclass - Class that represents a Student Object.
+// Compiler and C++ Version: GNU GCC / C++11 Standard
 //============================================================================
 
 #include "student.h"

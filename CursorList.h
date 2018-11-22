@@ -4,6 +4,7 @@
 // Version     : Version 1.0
 // Copyright   : Alexander M. Westphal / Paul Schröder
 // Description : CursorList Template Class
+// Compiler and C++ Version: GNU GCC / C++11 Standard
 //============================================================================
 
 #ifndef ALGODAT_CURSORLIST_H
@@ -77,7 +78,6 @@ public:
          * @return
          */
         iterator& operator = (const iterator& rhs){
-            m_el = rhs.m_el;
             m_index = rhs.m_index;
         }
 
@@ -87,7 +87,7 @@ public:
          * @return will return true in case the iterator a not the same.
          */
         bool operator != (const iterator& rhs) const{
-            return  m_el != rhs.m_el && m_index != rhs.m_index;
+            return  m_el != rhs.m_el || m_index != rhs.m_index;
         }
 
         /**
@@ -96,7 +96,7 @@ public:
          * @return will return true in case the iterator a the same.
          */
         bool operator == (const iterator& rhs) const{
-            return m_el == rhs.m_el && m_index == rhs.m_index;
+            return m_el == rhs.m_el || m_index == rhs.m_index;
         }
 
         /**
@@ -240,8 +240,7 @@ public:
      * @return will return a iterator pointing on the inserted object.
      */
     iterator insert(iterator itr, T& value) {
-        std::cout << "-------->> " << CursorList::get_counter() << " ----> " << itr.m_index << std::endl;
-        if (itr.m_index == start_data){ // TRUE
+        if (itr.m_index == start_data){
             push_front(value);
             return begin();
         } else if (itr != begin() || itr != end()) {
@@ -280,31 +279,13 @@ public:
      * @return will return a iterator pointing on the stop element.
      */
     iterator erase(iterator start, iterator stop){
-        int before_start = arr[start.m_index].prev;
-        if (start == begin() && stop == end()){
-            while (start != stop) {
-                pop_front();
-                ++start;
-            }
-            start_data = -1;
-        } else if (start == begin() && stop != end()) {
-            while (start != stop) {
-                pop_front();
-                ++start;
-            }
-            arr[stop.m_index].prev = -1;
-            start_data = stop.m_index;
-        } else if (start != begin() && stop != end()){
-            for(iterator it = start; it != stop; ++it) {
-                erase(it);
-            }
-            arr[before_start].next = stop.m_index;
-            arr[stop.m_index].prev = before_start;
-        }  else {
-            for(iterator it = start; it != stop; ++it) {
-                erase(it);
-            }
-            arr[before_start].next = -1;
+        int i = start.m_index;
+        while (i != stop.m_index) {
+            cout << i << " " << stop.m_index << endl;
+            int b = arr[i].next;
+            erase(ListIterator(i, arr));
+            i = b;
+            cout << i << " " << stop.m_index << endl;
         }
         return stop;
     }
@@ -315,22 +296,65 @@ public:
      * @return will return a iterator.
      */
     iterator erase(iterator itr) {
-        if (itr.m_index == start_data) {
-            ++itr;
-            pop_front();
-            return itr;
-        } else {
-            int posToDelete = itr.m_index;
-            int posBeforeDelete = arr[itr.m_index].prev;
-            int posAfterDelete = arr[itr.m_index].next;
-            ++itr;
-            arr[posBeforeDelete].next = posAfterDelete;
-            arr[posAfterDelete].prev = posBeforeDelete;
-            arr[posToDelete].prev = -1;
-            arr[posToDelete].next = start_free;
-            arr[start_free].prev = posToDelete;
-            start_free = posToDelete;
-            return itr;
+        set_counter(get_counter() - 1);
+        ListIterator back=itr;
+        back.m_index = arr[itr.m_index].next;
+        bool delete_ = false;
+        if(size()==0){
+            cerr << "Fehler ! Listen ende erreicht" << endl;
+            delete_ = true;
+        }
+        if(size() == 1){
+            if(start_data!=itr.m_index){
+                cerr << "Itr zeig auf falsches m_Index ! " << endl;
+            }
+            arr[arr[itr.m_index].next].prev=-1;
+            arr[itr.m_index].prev = -1;
+            arr[start_free].prev = itr.m_index;
+            arr[itr.m_index].next = start_free;
+            start_free = itr.m_index;
+            start_data = -1;
+            delete_ = true;
+        }
+
+        if (arr[itr.m_index].prev == -1) {
+            arr[arr[itr.m_index].next].prev=-1;
+            start_data=arr[itr.m_index].next;
+            arr[itr.m_index].prev = -1;
+            arr[start_free].prev=itr.m_index;
+            arr[itr.m_index].next = start_free;
+            start_free = itr.m_index;
+            delete_ = true;
+        }
+        // wenn man letztes Element löscht
+        if (arr[itr.m_index].next == -1) {
+            arr[arr[itr.m_index].prev].next=-1;
+            arr[itr.m_index].prev = -1;
+            arr[start_free].prev=itr.m_index;
+            arr[itr.m_index].next = start_free;
+            start_free = itr.m_index;
+            delete_ = true;
+        }
+        //Man möchte etwas löschen was nicht am anfang und nicht am ende liegt
+        if (delete_ == false) {
+// möchte listen eintrag B zwischen A&C löschen
+
+            // verkettung zwischen A&C herstellen
+            arr[arr[itr.m_index].prev].next= arr[itr.m_index].next;
+            arr[arr[itr.m_index].next].prev= arr[itr.m_index].prev;
+
+
+//B als erstes Elmenet für Free liste verketten
+            arr[itr.m_index].prev = -1;
+            arr[itr.m_index].next = start_free;
+            arr[start_free].prev=itr.m_index;
+            start_free = itr.m_index;
+
+        }
+        if(back.m_index != -1){
+            return back;
+        }else {
+            cerr << "es wurde das letzte Element der Liste gelöscht daher gibt es kein ++itr" << endl;
         }
     };
 
@@ -375,8 +399,8 @@ public:
  */
 template<typename Iterator, typename T>
 Iterator find(Iterator start, Iterator stop, const T& value) {
-    for(typename CursorList<T>::iterator it = start; it != stop; it++) {
-        if(it.m_el[it.m_index].data == value) {
+    for(typename CursorList<T>::iterator it = start; it != stop; ++it) {
+        if(*it == value) {
             return it;
         }
     }
