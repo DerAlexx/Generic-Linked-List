@@ -281,9 +281,11 @@ public:
     iterator erase(iterator start, iterator stop){
         int i = start.m_index;
         while (i != stop.m_index) {
+            cout << i << " " << stop.m_index << endl;
             int b = arr[i].next;
             erase(ListIterator(i, arr));
             i = b;
+            cout << i << " " << stop.m_index << endl;
         }
         return stop;
     }
@@ -294,29 +296,36 @@ public:
      * @return will return a iterator.
      */
     iterator erase(iterator itr) {
-        set_counter(get_counter() - 1);
-        ListIterator ret = itr;
-        ret.m_index = arr[itr.m_index].next;
+        ListIterator back=itr;
+        back.m_index = arr[itr.m_index].next;
         bool delete_ = false;
+        if(size()==0){
+            cerr << "Fehler ! Listen ende erreicht" << endl;
+            delete_ = true;
+        }
         if(size() == 1){
-            arr[arr[itr.m_index].next].prev = -1;
-            arr[itr.m_index].prev = -1;
-            arr[start_free].prev = itr.m_index;
-            arr[itr.m_index].next = start_free;
-            start_free = itr.m_index;
+            set_counter(get_counter() - 1);
+            if(start_data!=itr.m_index){
+                cerr << "Itr zeig auf falsches m_Index ! " << endl;
+            }
+            einhaengen_free(itr.m_index);
             start_data = -1;
             delete_ = true;
         }
-        if (arr[itr.m_index].prev == -1) {
-            arr[arr[itr.m_index].next].prev = -1;
-            start_data = arr[itr.m_index].next;
+
+        else if (arr[itr.m_index].prev == -1) {
+            set_counter(get_counter() - 1);
+            arr[arr[itr.m_index].next].prev=-1;
+            start_data=arr[itr.m_index].next;
             arr[itr.m_index].prev = -1;
-            arr[start_free].prev = itr.m_index;
+            arr[start_free].prev=itr.m_index;
             arr[itr.m_index].next = start_free;
             start_free = itr.m_index;
             delete_ = true;
         }
-        if (arr[itr.m_index].next == -1) {
+        // wenn man letztes Element löscht
+        else if (arr[itr.m_index].next == -1) {
+            set_counter(get_counter() - 1);
             arr[arr[itr.m_index].prev].next = -1;
             arr[itr.m_index].prev = -1;
             arr[start_free].prev = itr.m_index;
@@ -325,18 +334,20 @@ public:
             delete_ = true;
         }
         if (delete_ == false) {
+            set_counter(get_counter() - 1);
             arr[arr[itr.m_index].prev].next= arr[itr.m_index].next;
             arr[arr[itr.m_index].next].prev= arr[itr.m_index].prev;
             arr[itr.m_index].prev = -1;
             arr[itr.m_index].next = start_free;
-            arr[start_free].prev = itr.m_index;
+            arr[start_free].prev=itr.m_index;
             start_free = itr.m_index;
 
         }
-        if(ret.m_index != -1){
-            return ret;
+        if(back.m_index != -1){
+            return back;
         }else {
-            cout << "Delete last Element" << endl;
+            cerr << "es wurde das letzte Element der Liste gelöscht daher gibt es kein ++itr" << endl;
+            return end();
         }
     };
 

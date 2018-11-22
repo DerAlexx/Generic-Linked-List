@@ -19,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/algoDat.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algoDat.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/algoDat.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algoDat.ilk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/algoDat.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algoDat.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,14 +122,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="749" />
-          <entry key="h" value="1701" />
+          <entry key="cpp" value="822" />
+          <entry key="h" value="1890" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="2449" />
+          <entry key="ObjectiveC" value="2711" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -148,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18">
-              <caret line="127" column="7" selection-start-line="127" selection-start-column="7" selection-end-line="127" selection-end-column="7" />
+            <state relative-caret-position="96">
+              <caret line="117" column="1" selection-start-line="117" selection-start-column="1" selection-end-line="117" selection-end-column="1" />
               <folding>
                 <element signature="e#354#373#0" expanded="true" />
               </folding>
@@ -160,8 +161,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CursorList.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="311" column="23" selection-start-line="311" selection-start-column="23" selection-end-line="311" selection-end-column="23" />
+            <state relative-caret-position="479">
+              <caret line="334" column="9" selection-start-line="334" selection-start-column="9" selection-end-line="334" selection-end-column="9" />
               <folding>
                 <element signature="e#501#513#0" expanded="true" />
                 <element signature="e#11350#11381#0" expanded="true" />
@@ -288,12 +289,12 @@
       <workItem from="1542710407827" duration="5599000" />
       <workItem from="1542739800304" duration="2544000" />
       <workItem from="1542817724160" duration="28499000" />
-      <workItem from="1542871956700" duration="13250000" />
+      <workItem from="1542871956700" duration="15974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52481000" />
+    <option name="totallyTimeSpent" value="55205000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -313,7 +314,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2527115" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.68546635" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -342,7 +343,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>148</line>
+          <line>147</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -380,8 +381,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="127" column="7" selection-start-line="127" selection-start-column="7" selection-end-line="127" selection-end-column="7" />
+        <state relative-caret-position="96">
+          <caret line="117" column="1" selection-start-line="117" selection-start-column="1" selection-end-line="117" selection-end-column="1" />
           <folding>
             <element signature="e#354#373#0" expanded="true" />
           </folding>
@@ -390,8 +391,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CursorList.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="311" column="23" selection-start-line="311" selection-start-column="23" selection-end-line="311" selection-end-column="23" />
+        <state relative-caret-position="479">
+          <caret line="334" column="9" selection-start-line="334" selection-start-column="9" selection-end-line="334" selection-end-column="9" />
           <folding>
             <element signature="e#501#513#0" expanded="true" />
             <element signature="e#11350#11381#0" expanded="true" />

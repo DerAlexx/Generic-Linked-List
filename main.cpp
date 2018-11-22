@@ -27,9 +27,7 @@ int main() {
         cout << "Aktuell passen noch " << curs.array_size_start - curs.get_counter() << " Studenten in die Liste"<< endl << "Studenten: " << endl;
         for(CursorList<Student>::iterator it = curs.begin(); it != CursorList<Student>::iterator(-1, curs.arr); ++it) {
             std::cout << it.m_index << " " << *it << std::endl;
-
         }
-
         eingabe = input();
         switch(eingabe){
             case 1:
@@ -57,7 +55,7 @@ int main() {
                 eingabe = 0;
                 break;
             default:
-                std::cout << "falsche eingabe";
+                std::cout << "falsche Eingabe";
                 break;
         }
     }
@@ -93,8 +91,8 @@ void createStudent(){
     using namespace std;
     int i,k;
     char u[10],j[10];
-    cout << "Geben sie eine Matrikelnummer, einen Geburtstag der Form (04021998) sowie einen Namen und einen Vornamen ein" << endl;
-    cout << "Beispiel: 666 06066666 Johanny Satan \n";
+    cout << "Geben sie eine Matrikelnummer, einen Geburtstag sowie einen Namen und einen Vornamen ein" << endl;
+    cout << "Beispiel: 111 04021998 Paula Schrot \n";
     cin >> i >> k >> u >> j;
         Student abc(i, u, j ,k);
         try {
@@ -113,7 +111,7 @@ void deleteStudent(){
     cout << "Geben sie die Position eines Studenten ein, der geloescht werden soll" << endl;
     cin >> position;
         try {
-            curs.erase(CursorList<Student>::ListIterator(position, curs.arr)); //CursorList<Student>::ListIterator(position, curs.arr)
+            curs.erase(CursorList<Student>::ListIterator(position, curs.arr)); //CursorList<Student>::ListIterator(position, curs.arr) ::find(curs.begin(), curs.end(), curs.get_value(position))
         } catch (...) {
             cout << "Error Occured Data Struct is full" << endl;
         }
@@ -142,7 +140,8 @@ void createStudentBeforePosition(){
     using namespace std;
     int i,k, position;
     char u[10],j[10];
-    cout << "Geben sie eine Matrikelnummer, einen Geburtstag der Form (40298 fuer 4.02.1998), einen Namen, einen Vornamen und eine Position ein" << endl;
+    cout << "Geben sie eine Matrikelnummer, einen Geburtstag, einen Namen, einen Vornamen und eine Position ein" << endl;
+    cout << "Beispiel: 111 04021998 Paula Schrot \n";
     cin >> i >> k >> u >> j >> position;
     Student abc(i, u, j ,k);
         try {
