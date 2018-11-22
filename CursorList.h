@@ -87,7 +87,7 @@ public:
          * @return will return true in case the iterator a not the same.
          */
         bool operator != (const iterator& rhs) const{
-            return  m_el != rhs.m_el || m_index != rhs.m_index;
+            return  m_el != rhs.m_el && m_index != rhs.m_index;
         }
 
         /**
@@ -96,7 +96,7 @@ public:
          * @return will return true in case the iterator a the same.
          */
         bool operator == (const iterator& rhs) const{
-            return m_el == rhs.m_el || m_index == rhs.m_index;
+            return m_el == rhs.m_el && m_index == rhs.m_index;
         }
 
         /**
@@ -280,8 +280,31 @@ public:
      * @return will return a iterator pointing on the stop element.
      */
     iterator erase(iterator start, iterator stop){
-        for(iterator it = start; it != stop; it++) {
+        int before_start = arr[start.m_index].prev;
+        if (start == begin() && stop == end()){
+            while (start != stop) {
+                pop_front();
+                ++start;
+            }
+            start_data = -1;
+        } else if (start == begin() && stop != end()) {
+            while (start != stop) {
+                pop_front();
+                ++start;
+            }
+            arr[stop.m_index].prev = -1;
+            start_data = stop.m_index;
+        } else if (start != begin() && stop != end()){
+            for(iterator it = start; it != stop; ++it) {
                 erase(it);
+            }
+            arr[before_start].next = stop.m_index;
+            arr[stop.m_index].prev = before_start;
+        }  else {
+            for(iterator it = start; it != stop; ++it) {
+                erase(it);
+            }
+            arr[before_start].next = -1;
         }
         return stop;
     }
