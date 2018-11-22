@@ -73,9 +73,8 @@ public:
         }
 
         /**
-         *
-         * @param rhs
-         * @return
+         *  Overloading assignment operator.
+         * @param rhs iterator reference
          */
         iterator& operator = (const iterator& rhs){
             m_index = rhs.m_index;
@@ -367,16 +366,6 @@ public:
     int get_counter() {
         return counter;
     }
-
-    /**
-     * Method to get the value of a Template Object.
-     * @param index index of the object
-     * @return will return the object form the linkedlist.
-     */
-    T& get_value (int index){
-        return arr[index].data;
-    }
-
 };
 
 /**
