@@ -19,9 +19,6 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/algoDat.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algoDat.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/algoDat.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algoDat.ilk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/algoDat.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/algoDat.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/student.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student.h" beforeDir="false" afterPath="$PROJECT_DIR$/student.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -125,13 +122,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cpp" value="749" />
-          <entry key="h" value="1577" />
+          <entry key="h" value="1701" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="2325" />
+          <entry key="ObjectiveC" value="2449" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -148,11 +145,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="115" column="65" selection-start-line="115" selection-start-column="65" selection-end-line="115" selection-end-column="65" />
+            <state relative-caret-position="-18">
+              <caret line="127" column="7" selection-start-line="127" selection-start-column="7" selection-end-line="127" selection-end-column="7" />
               <folding>
                 <element signature="e#354#373#0" expanded="true" />
               </folding>
@@ -160,11 +157,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CursorList.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13">
-              <caret line="298" column="35" selection-start-line="298" selection-start-column="35" selection-end-line="298" selection-end-column="35" />
+            <state relative-caret-position="536">
+              <caret line="311" column="23" selection-start-line="311" selection-start-column="23" selection-end-line="311" selection-end-column="23" />
               <folding>
                 <element signature="e#501#513#0" expanded="true" />
                 <element signature="e#11350#11381#0" expanded="true" />
@@ -208,8 +205,8 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/student.cpp" />
         <option value="$PROJECT_DIR$/student.h" />
-        <option value="$PROJECT_DIR$/CursorList.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/CursorList.h" />
       </list>
     </option>
   </component>
@@ -219,7 +216,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -291,12 +288,12 @@
       <workItem from="1542710407827" duration="5599000" />
       <workItem from="1542739800304" duration="2544000" />
       <workItem from="1542817724160" duration="28499000" />
-      <workItem from="1542871956700" duration="11667000" />
+      <workItem from="1542871956700" duration="13250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50898000" />
+    <option name="totallyTimeSpent" value="52481000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -316,7 +313,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1626898" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2527115" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -381,23 +378,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CursorList.h">
+    <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="298" column="35" selection-start-line="298" selection-start-column="35" selection-end-line="298" selection-end-column="35" />
+        <state relative-caret-position="-18">
+          <caret line="127" column="7" selection-start-line="127" selection-start-column="7" selection-end-line="127" selection-end-column="7" />
           <folding>
-            <element signature="e#501#513#0" expanded="true" />
-            <element signature="e#11350#11381#0" expanded="true" />
+            <element signature="e#354#373#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/CursorList.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="115" column="65" selection-start-line="115" selection-start-column="65" selection-end-line="115" selection-end-column="65" />
+        <state relative-caret-position="536">
+          <caret line="311" column="23" selection-start-line="311" selection-start-column="23" selection-end-line="311" selection-end-column="23" />
           <folding>
-            <element signature="e#354#373#0" expanded="true" />
+            <element signature="e#501#513#0" expanded="true" />
+            <element signature="e#11350#11381#0" expanded="true" />
           </folding>
         </state>
       </provider>
